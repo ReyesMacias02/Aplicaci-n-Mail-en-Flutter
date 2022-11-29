@@ -100,6 +100,11 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
+              usersPets[index].dateTime.toString(),
+              textAlign: TextAlign.left,
+              style: const TextStyle(fontSize: 18),
+            ),
+            Text(
               usersPets[index].subject,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),

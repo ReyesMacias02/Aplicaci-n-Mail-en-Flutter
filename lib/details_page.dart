@@ -9,7 +9,7 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(" Correo ${userPet.id}"),
+          title: Text(" Correo ${userPet.id} ${userPet.subject}"),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
