@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:rest_api_app/details_page.dart';
+import 'package:rest_api_app/screen/DetailScreen.dart';
 import 'package:rest_api_app/models/email.dart';
 import 'package:http/http.dart' as http;
 
-import 'models/backend.dart';
+import '../models/backend.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+class EmailWidget extends StatefulWidget {
+  const EmailWidget({Key? key, required this.indexs}) : super(key: key);
+  final int indexs;
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<EmailWidget> createState() => _EmailWidgetState(indexs);
 }
 
-class _HomePageState extends State<HomePage> {
+class _EmailWidgetState extends State<EmailWidget> {
   // For holding response as UserPets
   late List<Email> usersPets;
+  late int index;
   // for data is loaded flag
   bool isDataLoaded = false;
   // error holding
   String errorMessage = '';
+
+  _EmailWidgetState(int indexs) {
+    this.index = indexs;
+  }
 
   callAPIandAssignData() async {
     usersPets = Backend().getEmails();
@@ -30,26 +35,13 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Email-Reyes-Macias'),
-          centerTitle: true,
-        ),
-        body: ListView.builder(
-          itemCount: usersPets.length,
-          itemBuilder: (context, index) => getRow(index),
-        ));
-  }
-
   refresh() {
     setState(() {});
   }
 
-  Widget getRow(
-    int index,
-  ) {
+  @override
+  Widget build(BuildContext context) {
+    ;
     return Card(
         // Then show a snackbar.
         child: Dismissible(
