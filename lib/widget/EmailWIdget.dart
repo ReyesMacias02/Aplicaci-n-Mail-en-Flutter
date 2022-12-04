@@ -74,7 +74,13 @@ class _EmailWidgetState extends State<EmailWidget> {
       },
       child: ListTile(
         onTap: () {
-          // Navigate to Next Details
+          // Navigate
+          //to Next Details
+          Backend().markEmailAsRead(usersPets[index].id);
+          print('actualizado');
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Correo Marcado como leido')));
+          refresh();
           Navigator.push(
               context,
               MaterialPageRoute(
